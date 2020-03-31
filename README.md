@@ -1,4 +1,6 @@
-### snippets
+### Prefix => Method
+
+> make sure you are in the right type file
 
 | Prefix              | Method                                                      |
 | ------------------- | ----------------------------------------------------------- |
@@ -17,25 +19,25 @@
 | `zz-cwun`           | `componentWillUnmount = () => { }`                          |
 | `zz-gdsfp`          | `static getDerivedStateFromProps(nextProps, prevState) { }` |
 | `zz-gsbu`           | `getSnapshotBeforeUpdate = (prevProps, prevState) => { }`   |
-| `zz-page-normal`    | `jsx page`                                                  |
-| `zz-model-normal`   | `model`                                                     |
-| `zz-service-normal` | `services`                                                  |
+| `zz-page-normal`    | `jsx|js page`                                               |
+| `zz-model-normal`   | `models page`                                               |
+| `zz-service-normal` | `services page`                                             |
 
 ### zz-page-normal
 
-> maybe not the latest content
+> maybe not the latest content, see `src/pages/DemoPage.js`
 
 ```javascript
-import React, { Component } from 'react';
-import { connect } from 'dva';
-import { ConfigProvider, Spin } from antd;
-import zhCN from 'antd/es/locale/zh_CN';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { connect } from "dva";
+import { ConfigProvider, Spin } from "antd";
+import zhCN from "antd/es/locale/zh_CN";
+import PropTypes from "prop-types";
 
-import styles from './demo.less';
+import styles from "./DemoPage.less";
 
 @connect(({ demo, loading }) => ({ demoData: demo, loadingData: loading }))
-class demo extends Component {
+class DemoPage extends Component {
   // 不需要可以先注释，建议进行类型检查
   static propTypes = {
     // 特定的JS类型
@@ -53,12 +55,12 @@ class demo extends Component {
     // 某个类的实例
     optionalMessage: PropTypes.instanceOf(Message),
     // 指定枚举类型：你可以把属性限制在某些特定值之内
-    optionalEnum: PropTypes.oneOf(['A', 'B']),
+    optionalEnum: PropTypes.oneOf(["A", "B"]),
     // 指定多个类型：你也可以把属性类型限制在某些指定的类型范围内
     optionalUnion: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
-      PropTypes.instanceOf(Message)
+      PropTypes.instanceOf(Message),
     ]),
     // 指定某个类型的数组
     optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
@@ -67,63 +69,63 @@ class demo extends Component {
     // 指定类型为对象，且可以规定哪些属性必须有，哪些属性可以没有
     optionalObjectWithShape: PropTypes.shape({
       optionalProperty: PropTypes.string,
-      requiredProperty: PropTypes.number.isRequired
+      requiredProperty: PropTypes.number.isRequired,
     }),
-  }
+  };
 
   static defaultProps = {
-    key: 'value'
-  }
+    key: "value",
+  };
 
   state = {
-    key: 'value'
-  }
+    key: "value",
+  };
 
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
-      type:'demoData/getDemoList',
-      payload: {}
+      type: "demoData/getDemoList",
+      payload: {},
     }).then(res => {
-      if(res) {
-        console.log('res:', res)
+      if (res) {
+        console.log("res:", res);
       }
-    })
+    });
   }
 
-  // zz-scu
+  // need shouldComponentUpdate type&enter zz-scu
 
-  // zz-cdup
+  // need componentDidUpdate type&enter zz-cdup
 
-  // zz-cwun
+  // need componentWillUnmount type&enter zz-cwun
 
   render() {
-    const {} = this.state;
+    const { key } = this.state;
     const { loadingData } = this.props;
     const { effects } = loadingData;
 
     // 此处注意替换
-    const spinning = effects['demoData/getDemoList'] || false;
+    const spinning = effects["demoData/getDemoList"] || false;
 
     return (
       <ConfigProvider locale={zhCN}>
         <Spin spinning={spinning}>
           <div className={styles.root}>
-            many components here...
-
+            <div>many components here... </div>
+            <div>DemoPage</div>
           </div>
         </Spin>
       </ConfigProvider>
-    )
+    );
   }
 }
 
-export default demo;
+export default DemoPage;
 ```
 
 ### zz-model-normal
 
-> maybe not the latest content
+> maybe not the latest content, see `src/models/demo.js`
 
 ```javascript
 // import { message } from 'antd';
@@ -134,7 +136,7 @@ const initData = {
 };
 
 export default {
-  namespace: "demoModel",
+  namespace: "demo",
   state: {
     ...initData,
   },
@@ -163,17 +165,29 @@ export default {
     }),
     clearData: () => ({ ...initData }),
   },
+  //subscriptions: {
+  //	setup({ dispatch, history }) {
+  //		return history.listen(({ pathname }) => {
+  //			if( pathname && pathname === '/' ) {
+  //				// do something when app init
+  //				dispatch({
+  //					type: '',
+  //					payload: {}
+  //				})
+  //			}
+  //		})
+  //	}
+  //}
 };
 ```
 
 ### zz-service-normal
 
-> maybe not the latest content
+> maybe not the latest content, see `src/services/demo.js`
 
 ```javascript
 import { post, get } from "@ali-whale/fetch-web";
 
-export const getDemoList = data => get(`/path/data`);
+export const getDemoList = data => get(`/path/${data}`);
 export const update = data => post("/path", data);
 ```
-
