@@ -1,0 +1,38 @@
+{
+  "name": "umi-dva-snippets",
+  "displayName": "umi-dva-snippets",
+  "description": "create snippets for those projects who uses umi&dva",
+  "version": "0.0.4",
+  "publisher": "gnkevin",
+  "icon": "images/logo.png",
+  "keywords": [
+    "snippets",
+    "react",
+    "javascript",
+    "umi",
+    "dva",
+    "cbd"
+  ],
+  "engines": {
+    "vscode": "^1.22.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/snippets.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/snippets.json"
+      }
+    ]
+  }
+}
