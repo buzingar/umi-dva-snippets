@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="value">0</div>
+    <button id="btn">提交</button>
+    <script>
+      const debounce = (func, wait, immediate = true) => {
+        let timeout;
+
+        return function () {
+          let context = this;
+          let args = arguments;
+
+          if (timeout) clearTimeout(timeout);
+          if (immediate) {
+            const callNow = !timeout;
+            timeout = setTimeout(() => {
+              timeout = null;
+            }, wait);
+            if (callNow) {
+              func.apply(context, args);
+            } else {
+              throw Error("you clicked too fast");
+            }
+          } else {
+            timeout = setTimeout(() => {
+              func.apply(context, args);
+            }, wait);
+          }
+        };
+      };
+
+      const throttle = (func, wait, type) => {
+        let previous = 0;
+        let timeout;
+
+        return function () {
+          let context = this;
+          let args = arguments;
+
+          if (type === "timestamp") {
+            let now = Date.now();
+            if (now - previous > wait) {
+              func.apply(context, args);
+              previous = now;
+            }
+            return;
+          }
+
+          if (!timeout) {
+            timeout = setTimeout(() => {
+              timeout = null;
+              func.apply(context, args);
+            }, wait);
+          }
+        };
+      };
+
+      document.getElementById("btn").addEventListener(
+        "click",
+        throttle(() => {
+          const val = document.getElementById("value").innerText;
+          document.getElementById("value").innerText = parseFloat(
+            Math.random() * 10000
+          ).toFixed(1);
+        }, 1000)
+      );
+    </script>
+  </body>
+</html>

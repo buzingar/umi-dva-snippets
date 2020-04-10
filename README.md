@@ -2,26 +2,36 @@
 
 > make sure you are in the right type file
 
-| Prefix              | Method                                                      |
-| ------------------- | ----------------------------------------------------------- |
-| `zz-imp`            | `import moduleName from module`                             |
-| `zz-imd`            | `import {destructuredModule} from module`                   |
-| `zz-impt`           | `import PropTypes from 'prop-types'`                        |
-| `zz-exp`            | `export default moduleName`                                 |
-| `zz-fre`            | `arrayName.forEach(element => { }`                          |
-| `zz-map`            | `arrayName.map(element => { }`                              |
-| `zz-cp`             | `const { } = this.props`                                    |
-| `zz-cs`             | `const { } = this.state`                                    |
-| `zz-clg`            | `console.log("data:", object)`                              |
-| `zz-cdm`            | `componentDidMount = () => { }`                             |
-| `zz-scu`            | `shouldComponentUpdate = (nextProps, nextState) => { }`     |
-| `zz-cdup`           | `componentDidUpdate = (prevProps, prevState) => { }`        |
-| `zz-cwun`           | `componentWillUnmount = () => { }`                          |
-| `zz-gdsfp`          | `static getDerivedStateFromProps(nextProps, prevState) { }` |
-| `zz-gsbu`           | `getSnapshotBeforeUpdate = (prevProps, prevState) => { }`   |
-| `zz-page-normal`    | `jsx|js page`                                               |
-| `zz-model-normal`   | `models page`                                               |
-| `zz-service-normal` | `services page`                                             |
+| Prefix                  | Method                                                      |
+| ----------------------- | ----------------------------------------------------------- |
+| `zz-imp`                | `import moduleName from module`                             |
+| `zz-imd`                | `import {destructuredModule} from module`                   |
+| `zz-impt`               | `import PropTypes from 'prop-types'`                        |
+| `zz-exp`                | `export default moduleName`                                 |
+| `zz-fre`                | `arrayName.forEach(element => { }`                          |
+| `zz-map`                | `arrayName.map(element => { }`                              |
+| `zz-cp`                 | `const { } = this.props`                                    |
+| `zz-cs`                 | `const { } = this.state`                                    |
+| `zz-clg`                | `console.log("data:", object)`                              |
+| `zz-cdm`                | `componentDidMount = () => { }`                             |
+| `zz-scu`                | `shouldComponentUpdate = (nextProps, nextState) => { }`     |
+| `zz-cdup`               | `componentDidUpdate = (prevProps, prevState) => { }`        |
+| `zz-cwun`               | `componentWillUnmount = () => { }`                          |
+| `zz-gdsfp`              | `static getDerivedStateFromProps(nextProps, prevState) { }` |
+| `zz-gsbu`               | `getSnapshotBeforeUpdate = (prevProps, prevState) => { }`   |
+| `zz-checkZhName`        | `check chinese character`                                   |
+| `zz-checkPhone`         | `check phone number`                                        |
+| `zz-checkSelfPattern`   | `check by given regex`                                      |
+| `zz-checkId`            | `check chinese idno`                                        |
+| `zz-checkEmptyOrBeyond` | `check empty or beyond length`                              |
+| `zz-debounce`           | `debounce`                                                  |
+| `zz-throttle`           | `throttle`                                                  |
+| `zz-pack`               | `pack script`                                               |
+| `zz-props`              | `prop types`                                                |
+| `zz-purefunc`           | `create pure function component`                            |
+| `zz-page-normal`        | `jsx js page`                                               |
+| `zz-model-normal`       | `models page`                                               |
+| `zz-service-normal`     | `services page`                                             |
 
 ### zz-page-normal
 
@@ -86,7 +96,7 @@ class DemoPage extends Component {
     dispatch({
       type: "demoData/getDemoList",
       payload: {},
-    }).then(res => {
+    }).then((res) => {
       if (res) {
         console.log("res:", res);
       }
@@ -188,6 +198,6 @@ export default {
 ```javascript
 import { post, get } from "@ali-whale/fetch-web";
 
-export const getDemoList = data => get(`/path/${data}`);
-export const update = data => post("/path", data);
+export const getDemoList = (data) => get(`/path/${data}`);
+export const update = (data) => post("/path", data);
 ```

@@ -4,6 +4,10 @@ All info about changes
 
 # Released
 
+[0.0.5] - 2020-04-10
+
+- add some snippets, validation check etc.
+
 [0.0.4] - 2020-03-31
 
 - add model subscriptions & page content modify

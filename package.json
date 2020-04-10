@@ -2,7 +2,7 @@
   "name": "umi-dva-snippets",
   "displayName": "umi-dva-snippets",
   "description": "create snippets for those projects who uses umi&dva",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "gnkevin",
   "icon": "images/logo.png",
   "keywords": [
