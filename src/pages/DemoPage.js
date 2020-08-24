@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "dva";
-import { ConfigProvider, Spin } from "antd";
+import { Spin } from "antd";
 import zhCN from "antd/es/locale/zh_CN";
 import PropTypes from "prop-types";
 
@@ -56,18 +56,18 @@ class DemoPage extends Component {
     dispatch({
       type: "demoData/getDemoList",
       payload: {},
-    }).then(res => {
+    }).then((res) => {
       if (res) {
         console.log("res:", res);
       }
     });
   }
 
-  // need shouldComponentUpdate type&enter zz-scu
+  // need shouldComponentUpdate? type&enter zz-scu
 
-  // need componentDidUpdate type&enter zz-cdup
+  // need componentDidUpdate? type&enter zz-cdup
 
-  // need componentWillUnmount type&enter zz-cwun
+  // need componentWillUnmount? type&enter zz-cwun
 
   render() {
     const { key } = this.state;
@@ -78,11 +78,9 @@ class DemoPage extends Component {
     const spinning = effects["demoData/getDemoList"] || false;
 
     return (
-      <ConfigProvider locale={zhCN}>
-        <Spin spinning={spinning}>
-          <div className={styles.root}>many components here... DemoPage</div>
-        </Spin>
-      </ConfigProvider>
+      <Spin spinning={spinning}>
+        <div className={styles.root}>many components here... DemoPage</div>
+      </Spin>
     );
   }
 }

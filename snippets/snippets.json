@@ -16,7 +16,7 @@
     "body": "export default $1$0"
   },
   "forEach": {
-    "prefix": "zz-fre",
+    "prefix": "zz-foreach",
     "body": ["${1:array}.forEach(${2:currentItem} => {", "\t${0}", "})", ""],
     "description": "Creates a forEach statement in ES7 syntax"
   },
@@ -41,32 +41,32 @@
     "description": "Displays a message in the console"
   },
   "componentDidMount": {
-    "prefix": "zz-cdm",
+    "prefix": "zz-lifecycle-cdm",
     "body": ["componentDidMount() {", "\t$0", "}", ""],
     "description": "Invoked once, only on the client (not on the server), immediately after the initial rendering occurs."
   },
   "shouldComponentUpdate": {
-    "prefix": "zz-scu",
+    "prefix": "zz-lifecycle-scu",
     "body": ["shouldComponentUpdate(nextProps, nextState) {", "\t$0", "}", ""],
     "description": "Invoked before rendering when new props or state are being received. "
   },
   "componentDidUpdate": {
-    "prefix": "zz-cdup",
+    "prefix": "zz-lifecycle-cdup",
     "body": ["componentDidUpdate(prevProps, prevState) {", "\t$0", "}", ""],
     "description": "Invoked immediately after the component's updates are flushed to the DOM."
   },
   "componentWillUnmount": {
-    "prefix": "zz-cwun",
+    "prefix": "zz-lifecycle-cwun",
     "body": ["componentWillUnmount() {", "\t$0", "}", ""],
     "description": "Invoked immediately before a component is unmounted from the DOM."
   },
   "getDerivedStateFromProps": {
-    "prefix": "zz-gdsfp",
+    "prefix": "zz-lifecycle-gdsfp",
     "body": ["static getDerivedStateFromProps(props, state) {", "\t${1}", "}"],
     "description": "Invoked right before calling the render method, both on the initial mount and on subsequent updates."
   },
   "getSnapshotBeforeUpdate": {
-    "prefix": "zz-gsbu",
+    "prefix": "zz-lifecycle-gsbu",
     "body": [
       "getSnapshotBeforeUpdate = (prevProps, prevState) => {",
       "\t$0",
@@ -117,7 +117,7 @@
     "description": "check with user provides pattern"
   },
   "checkId": {
-    "prefix": "zz-checkId",
+    "prefix": "zz-checkIdNo",
     "body": [
       "export const checkCode = (val, msg) => {",
       "\tvar p = /^[1-9]\\d{5}(18|19|20)\\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$/;",
@@ -245,8 +245,175 @@
     ],
     "description": "pack script"
   },
+  "maxItemOfArray": {
+    "prefix": "zz-maxInArray",
+    "body": [
+      "export const maxItem = arr => Math.max(...arr);",
+      "export const maxItemOfArray = arr => arr.sort((a, b) => b - a)[0];"
+    ],
+    "description": "获取数组中的最大数字"
+  },
+  "areAllEqual": {
+    "prefix": "zz-arrayItemEqual",
+    "body": [
+      "export const areAllEqual = array => array.every(item => item === array[0]);"
+    ],
+    "description": "检查数组的所有项是否相等"
+  },
+  "averageOf": {
+    "prefix": "zz-average",
+    "body": [
+      "export const averageOf = (…numbers) => numbers.reduce((a, b) => a + b, 0) / numbers.length;"
+    ],
+    "description": "求给定数字的平均值"
+  },
+  "reverseString": {
+    "prefix": "zz-reverse",
+    "body": ["export const reverseString = str => […str].reverse().join('');"],
+    "description": "反转一个字符串"
+  },
+  "sumOf": {
+    "prefix": "zz-sum",
+    "body": [
+      "export const sumOf = (…numbers) => numbers.reduce((a, b) => a + b, 0);"
+    ],
+    "description": "求给定数字的和"
+  },
+  "findAndReplace": {
+    "prefix": "zz-replaceStr",
+    "body": [
+      "export const findAndReplace = (string, wordToFind, wordToReplace) => string.split(wordToFind).join(wordToReplace);"
+    ],
+    "description": "在字符串中查找给定的单词，并替换为另一个单词"
+  },
+  "RGBToHex": {
+    "prefix": "zz-transcolor",
+    "body": [
+      "export const RGBToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');"
+    ],
+    "description": "将RGB模式下的颜色转换为十六进制"
+  },
+  "shuffle": {
+    "prefix": "zz-shuffle",
+    "body": [
+      "export const shuffle = ([…array]) => {",
+      "\t let m = array.length;",
+      "",
+      "\t while(m){",
+      "\t\t const i = Math.floor(Math.random() * m);",
+      "\t\t [array[m], array[i]] = [array[i], array[m]]",
+      "\t }",
+      "\t return array",
+      "};"
+    ],
+    "description": "随机播放播放项目"
+  },
+  "removeFalseValues": {
+    "prefix": "zz-rmFalseVal",
+    "body": [
+      "export const removeFalseValues = arr => arr.filter(item => item);"
+    ],
+    "description": "从数组中删除false值，包括false，undefined，NaN，empty"
+  },
+  "removeDuplicatedValues": {
+    "prefix": "zz-rmDuplicatedVal",
+    "body": [
+      "export const removeDuplicatedValues = array => […new Set(array)];"
+    ],
+    "description": "从数组中删除重复的项"
+  },
+  "getTimeFromDate": {
+    "prefix": "zz-time",
+    "body": [
+      "export const getTimeFromDate = date => date.toTimeString().slice(0, 8);"
+    ],
+    "description": "以日期对象的字符串形式返回时间"
+  },
+  "capitalizeAllWords": {
+    "prefix": "zz-capitalize",
+    "body": [
+      "export const capitalizeAllWords = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());"
+    ],
+    "description": "将字符串中所有单词的第一个字母大写"
+  },
+  "getDayDiff": {
+    "prefix": "zz-getDayDiff",
+    "body": [
+      "export const getDayDiff = (date1, date2) => ((date2 - date1) / (1000 * 3600 * 24));"
+    ],
+    "description": "返回两个日期之间以天为单位的差值"
+  },
+  "radianToDegree": {
+    "prefix": "zz-radianToDegree",
+    "body": [
+      "export const radianToDegree = radian => (radian * 180.0) / Math.PI;"
+    ],
+    "description": "把弧度转换成角度"
+  },
+  "isValidJSON": {
+    "prefix": "zz-valid-json",
+    "body": [
+      "export const isValidJSON = string => {",
+      "\t try {",
+      "\t\t JSON.parse(string);",
+      "\t\t return true;",
+      "\t } catch (error) {",
+      "\t\t return false",
+      "\t }",
+      "}"
+    ],
+    "description": "检查给定字符串是否是有效的JSON"
+  },
+  "toWords": {
+    "prefix": "zz-toWords",
+    "body": [
+      "export const toWords = (string, pattern = /[^a-zA-Z-]+/) => string.split(pattern).filter(item => item);"
+    ],
+    "description": "将给定的字符串转换为单词数组"
+  },
+  "scrollToTop": {
+    "prefix": "zz-scrollToTop",
+    "body": [
+      "const scrollToTop = () => {",
+      "\tconst t = document.documentElement.scrollTop || document.body.scrollTop;",
+      "\tif (t > 0) {",
+      "\t\twindow.requestAnimationFrame(scrollToTop);",
+      "\t\twindow.scrollTo(0, t — t / 8);",
+      "\t}",
+      "};"
+    ],
+    "description": "位于长页面的底部，并且想快速向上滚动至顶部"
+  },
+  "isValidNumber": {
+    "prefix": "zz-isValidNumber",
+    "body": [
+      "export const isValidNumber = n => !isNaN(parseFloat(n)) && isFinite(n) && Number(n) === n;"
+    ],
+    "description": "验证数字是否有效"
+  },
+  "makeId": {
+    "prefix": "zz-makeId",
+    "body": [
+      "export const makeId = (len) => {",
+      "\tlet text = '';",
+      "\tlet possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';",
+      "\tfor(let i = 0; i < len; i += 1) {",
+      "\t\ttext += possible.charAt(Math.floor(Math.random() * possible.length));",
+      "\t}",
+      "\treturn text;",
+      "};"
+    ],
+    "description": "生成随机字符串"
+  },
+  "flattenArray": {
+    "prefix": "zz-flatten-array",
+    "body": [
+      "export const deepFlatten = arr => [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));"
+    ],
+    "description": "深度平铺一个数组"
+  },
   "allPropTypesFormat": {
-    "prefix": "zz-props",
+    "prefix": "zz-proptypes",
     "body": [
       "// 特定的JS类型",
       "optionalArray: PropTypes.array,",
@@ -286,12 +453,18 @@
     "prefix": "zz-purefunc",
     "body": [
       "import React, { useState, useEffect } from 'react';",
+      "import PropTypes from 'prop-types';",
       "import { Button, Input } from 'antd';",
       "import styles from './index.less';",
       "",
-      "const ${1:${TM_FILENAME_BASE}} = ({}) => {",
-      "\t// useState",
-      "\t// useEffect",
+      "const ${1:${TM_FILENAME_BASE}} = (props) => {",
+      "\t",
+      "\t// const [value, setValue] = useState(null)",
+      "\t",
+      "\t// useEffect(()=>{// do something with value, return function cleanup(){}},[value])",
+      "\t",
+      "\tconst spinning = effects['[ns]/[modelEffect]'] || false;",
+      "\t",
       "\treturn (",
       "\t\t<div className={styles.container}>",
       "\t\t\t<Spin spinning={spinning}>",
@@ -304,7 +477,14 @@
       "\t);",
       "};",
       "",
-      "export default ${1:${TM_FILENAME_BASE}}"
+      "// props type limit, The more detailed information, the better it will be.",
+      "${1:${TM_FILENAME_BASE}}.propTypes = {",
+      "\toptions: PropTypes.array,",
+      "}",
+      "// default value 默认值",
+      "${1:${TM_FILENAME_BASE}}.defaultProps = {}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}};"
     ],
     "description": "create pure function component"
   },
@@ -346,11 +526,11 @@
       "\t\t})",
       "\t}",
       "",
-      "\t// need shouldComponentUpdate type&enter zz-scu",
+      "\t// need shouldComponentUpdate? type & enter zz-scu",
       "",
-      "\t// need componentDidUpdate type&enter zz-cdup",
+      "\t// need componentDidUpdate? type & enter zz-cdup",
       "",
-      "\t// need componentWillUnmount type&enter zz-cwun",
+      "\t// need componentWillUnmount? type & enter zz-cwun",
       "",
       "\trender() {",
       "\t\t// const { key } = this.state;",

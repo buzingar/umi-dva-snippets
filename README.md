@@ -1,3 +1,17 @@
+### vscode 插件开发步骤
+
+一、搭建环境，准备工作
+
+首先当然是安装 nodejs 跟 vscode。
+vscode 团队，为插件开发提供了一个工具，先全局安装这个，然后执行 `yo code` 来开始我们的工作。
+
+```bash
+$ npm install -g yo generator-code
+$ yo code
+```
+
+> https://cloud.tencent.com/developer/article/1354481
+
 ### Prefix => Method
 
 > make sure you are in the right type file
