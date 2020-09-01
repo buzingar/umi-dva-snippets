@@ -1,17 +1,17 @@
 {
-  "name": "umi-dva-snippets",
-  "displayName": "umi-dva-snippets",
-  "description": "create snippets for those projects who uses umi&dva",
-  "version": "0.0.5",
+  "name": "frontend-snippets",
+  "displayName": "frontend-snippets",
+  "description": "为前端开发而生",
+  "version": "0.1.0",
   "publisher": "gnkevin",
   "icon": "images/logo.png",
   "keywords": [
     "snippets",
     "react",
     "javascript",
-    "umi",
-    "dva",
-    "cbd"
+    "css",
+    "html5",
+    "web"
   ],
   "engines": {
     "vscode": "^1.22.0"
@@ -27,11 +27,23 @@
     "snippets": [
       {
         "language": "javascript",
-        "path": "./snippets/snippets.json"
+        "path": "./snippets/js.json"
       },
       {
         "language": "javascriptreact",
-        "path": "./snippets/snippets.json"
+        "path": "./snippets/js.json"
+      },
+      {
+        "language": "css",
+        "path": "./snippets/css.json"
+      },
+      {
+        "language": "json",
+        "path": "./snippets/json.json"
+      },
+      {
+        "language": "markdown",
+        "path": "./snippets/md.json"
       }
     ]
   }

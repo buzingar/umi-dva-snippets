@@ -1,0 +1,294 @@
+{
+  "border": {
+    "prefix": "gn-css-border",
+    "body": [
+      "/*border style see `gn-css-border-style`*/",
+      "border-$1: $2px solid #$3;"
+    ],
+    "description": "1px solid #fff，to see border style，type `gn-css-border-style`"
+  },
+  "showborderstyle": {
+    "prefix": "gn-css-border-style",
+    "body": [
+      "/* none:无边框。与任何指定的border-width值无关 */",
+      "/* hidden:隐藏边框。IE不支持 */",
+      "/* dotted:在MAC平台上IE4+与WINDOWS和UNIX平台上IE5.5+为点线。否则为实线（常用） */",
+      "/* dashed:在MAC平台上IE4+与WINDOWS和UNIX平台上IE5.5+为虚线。否则为实线（常用） */",
+      "/* solid:实线边框（常用） */",
+      "/* double:双线边框。两条单线与其间隔的和等于指定的border-width值 */",
+      "/* groove:根据border-color的值画3D凹槽 */",
+      "/* ridge:根据border-color的值画菱形边框 */",
+      "/* inset:根据border-color的值画3D凹边 */",
+      "/* outset:根据border-color的值画3D凸边 */"
+    ],
+    "description": "border style"
+  },
+  "background": {
+    "prefix": "gn-css-background",
+    "body": [
+      "background: /*#fff*/$1 url('$2') /*no-repeat/repeat-x/repeat-y*/$3 /*left*/$4 /*top*/$5 /*fixed/scroll*/$6;"
+    ],
+    "description": "background-color 设置颜色作为对象背景颜色;background-image 设置图片作为背景图片;background-repeat 设置背景平铺重复方向;background-attachment 设置或检索背景图像是随对象内容滚动还是固定的;background-position 设置或检索对象的背景图像位置。"
+  },
+  "backgroundCss3": {
+    "prefix": "gn-css3-background",
+    "body": [
+      "/*background: [background-color] | [background-image] | [background-position][/background-size] | [background-repeat] | [background-attachment] | [background-clip] | [background-origin],...*/",
+      "/*background-size指定背景图像的大小，是相对于父元素的宽度和高度的百分比的大小；*/",
+      "/*background-origin 属性指定了背景图像的位置区域。content-box, padding-box,和 border-box区域；*/",
+      "/*background-origin属性指定background-position属性应该是相对位置。注意如果背景图像background-attachment是\"固定\"，这个属性没有任何效果。*/",
+      "/*background-clip背景剪裁属性是从指定位置开始绘制。*/",
+      "background: $1 url('$2') /*left top*/$3 / /*100% 100%*/$4 /*no-repeat*/$5 /*fixed*/$6 /*content-box*/$7 /*border-box*/$8"
+    ],
+    "description": "css3 background"
+  },
+  "flexbox": {
+    "prefix": "gn-css3-flex",
+    "body": [
+      "/*任何一个容器都可以指定为Flex布局*/",
+      "display: flex;",
+      "/*flex-direction属性决定主轴的方向*/",
+      "flex-direction: /*row | row-reverse | column | column-reverse*/ row;",
+      "/*flex-wrap属性定义，如果一条轴线排不下，如何换行*/",
+      "flex-wrap: /*nowrap | wrap | wrap-reverse*/ nowrap;",
+      "/*flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap*/",
+      "flex-flow: /*<flex-direction> <flex-wrap>*/ row nowrap;",
+      "/*项目在主轴上的对齐方式*/",
+      "justify-content: /*flex-start | flex-end | center | space-between | space-around*/ center;",
+      "/*项目在交叉轴上如何对齐*/",
+      "align-items: /*flex-start | flex-end | center | baseline | stretch;*/ center;",
+      "/*多根轴线的对齐方式*/",
+      "align-content: /*flex-start | flex-end | center | space-between | space-around | stretch*/ center;",
+      "/*order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。*/",
+      "order: /*<number>*/ 0;",
+      "/*flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。都为1则等分，一个大其余小则按比例分*/",
+      "flex-grow: /*<number>*/ 0;",
+      "/*flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。都为1则等比例缩小；一个为0，其余为1，前者不缩小；负值对该属性无效。*/",
+      "flex-shrink: /*<number>*/ 1;",
+      "/*flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。*/",
+      "flex-basis: /*<length> | auto;*/ auto;",
+      "/*flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。*/",
+      "flex: /*none | auto | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]*/ auto;",
+      "/*align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。*/",
+      "align-self: /*auto | flex-start | flex-end | center | baseline | stretch;*/ auto;"
+    ],
+    "description": "flex"
+  },
+  "flexcenter": {
+    "prefix": "gn-css-flex-center",
+    "body": [
+      "display: flex;",
+      "justify-content: center;",
+      "align-items: center;"
+    ],
+    "description": "center by flex"
+  },
+  "ellipsis": {
+    "prefix": "gn-css-ellipsis",
+    "body": [
+      "overflow: hidden;",
+      "text-overflow: ellipsis;",
+      "white-space: nowrap;",
+      "-webkit-line-clamp: 2;",
+      "-webkit-box-orient: vertical;"
+    ],
+    "description": "超两行省略"
+  },
+  "multiLineEllipsis": {
+    "prefix": "gn-css-multi-ellipsis",
+    "body": [
+      "p {",
+      "\tposition:relative;",
+      "\tline-height:1.4em;",
+      "\t/* 3 times the line-height to show 3 lines */",
+      "\theight:4.2em;",
+      "\toverflow:hidden;",
+      "}",
+      "p::after {",
+      "\tcontent:\"...\";",
+      "\tfont-weight:bold;",
+      "\tposition:absolute;",
+      "\tbottom:0;",
+      "\tright:0;",
+      "\tpadding:0 20px 1px 45px;",
+      "\tbackground:#eee;",
+      "}"
+    ],
+    "description": "multi line ellipsis"
+  },
+  "requiredIcon": {
+    "prefix": "gn-css-required-icon",
+    "body": [
+      "$1:before{",
+      "\tdisplay: inline-block;",
+      "\tmargin-right: 4px;",
+      "\tcolor: #ff4d4f;",
+      "\tfont-size: 14px;",
+      "\tfont-family: SimSun,sans-serif;",
+      "\tline-height: 1;",
+      "\tcontent: \"*\";",
+      "}"
+    ],
+    "description": "require icon"
+  },
+  "boxShadow": {
+    "prefix": "gn-css3-box-shadow",
+    "body": [
+      "/*box-shadow: h-shadow水平 v-shadow垂直 blur模糊距离 spread阴影的大小 color阴影的颜色 inset内侧阴影;*/",
+      "box-shadow: $1 $2 $3 $4 #$5"
+    ],
+    "description": "box-shadow"
+  },
+  "borderRadius": {
+    "prefix": "gn-css3-border-radius",
+    "body": [
+      "/*第一个值为左上角，第二个值为右上角，第三个值为右下角，第四个值为左下角*/",
+      "border-radius: $1 $2 $3 $4"
+    ],
+    "description": "border radius"
+  },
+  "linearGradients": {
+    "prefix": "gn-css3-linear-gradient",
+    "body": [
+      "/*direction, color-stop1, color-stop2, ...*/",
+      "/*预定义方向：to bottom、to top、to right、to left、to bottom right*/",
+      "/*角度：顺时针计算，0deg 将创建一个从下到上的渐变，90deg 将创建一个从左到右的渐变。*/",
+      "/*重复线性渐变 repeating-linear-gradient*/",
+      "background-image: linear-gradient($1, #$2, #$3, ...);"
+    ],
+    "description": "CSS3 线性渐变"
+  },
+  "radialGradients": {
+    "prefix": "gn-css3-radial-gradient",
+    "body": [
+      "/*径向渐变由它的中心定义*/",
+      "/*渐变的中心、形状（circle 或 ellipse）、大小*/",
+      "/*颜色节点不均匀分布的径向渐变 radial-gradient(red 5%, yellow 15%, green 60%)*/",
+      "/*渐变大小closest-side、farthest-side、closest-corner、farthest-corner*/",
+      "background-image: radial-gradient(circle, red, yellow, green);",
+      "/*background-image: radial-gradient(shape size at position, start-color, ..., last-color);*/",
+      "background-image: radial-gradient(closest-side at 60% 55%, red, yellow, black);"
+    ],
+    "description": "CSS3 径向渐变"
+  },
+  "textEffects": {
+    "prefix": "gn-css3-text-effect",
+    "body": [
+      "/*设置如何对齐最后一行或紧挨着强制换行符之前的行*/",
+      "text-align-last: 'auto|left|right|center|justify|start|end|initial|inherit';",
+      "",
+      "/*规定当 text-align 设置为 \"justify\" 时所使用的对齐方法*/",
+      "text-justify: 'auto/*浏览器决定*/|none/*禁用齐行*/|inter-word/*增加/减少单词间的间隔*/|inter-ideograph/*用表意文本来排齐内容*/|inter-cluster/*只对不包含内部单词间隔的内容（比如亚洲语系）进行排齐*/|distribute/*类似报纸版面，除了在东亚语系中最后一行是不齐行的*/|kashida/*通过拉伸字符来排齐内容*/|trim';",
+      "",
+      "/*规定文本的轮廓，粗细 [模糊半径] 颜色*/",
+      "text-outline: 'thickness blur color';",
+      "",
+      "/*规定当文本溢出包含元素时发生的事情*/",
+      "text-overflow: 'clip/*修剪文本*/|ellipsis/*显示省略符号*/|string/*使用给定的字符串*/';",
+      "",
+      "/*向文本添加阴影，水平阴影的位置 竖直阴影的位置 模糊的距离 阴影颜色*/",
+      "text-shadow: 'h-shadow v-shadow blur color';",
+      "",
+      "/*规定文本的换行规则*/",
+      "text-wrap: 'normal/*只在允许的换行点进行换行*/|none/*不换行*/|unrestricted/*在任意两个字符间换行*/|suppress/*压缩元素中的换行。浏览器只在行中没有其他有效换行点时进行换行。*/';",
+      "",
+      "/*规定非中日韩文本的换行规则*/",
+      "word-break: 'normal/*使用浏览器默认的换行规则*/|break-all/*允许在单词内换行*/|keep-all/*只能在半角空格或连字符处换行*/';",
+      "",
+      "/*允许对长的不可分割的单词进行分割并换行到下一行*/",
+      "word-wrap: 'normal/*只在允许的断字点换行（浏览器保持默认处理）*/|break-word /*在长单词或 URL 地址内部进行换行*/';"
+    ],
+    "description": "CSS3 文本效果"
+  },
+  "fontFace": {
+    "prefix": "gn-css3-font-face",
+    "body": [
+      "@font-face {",
+      "\tfont-family: '字体名称';",
+      "\tsrc: url('字体文件的 URL');",
+      "\tfont-stretch: '如何拉伸字体';",
+      "\tfont-style: 'normal | italic | oblique';",
+      "\tfont-weight: 'bold';",
+      "}"
+    ],
+    "description": "css3 字体"
+  },
+  "2dtransform": {
+    "prefix": "gn-css3-2d-transform",
+    "body": [
+      "/*转换的效果是让某个元素改变形状，大小和位置 -ms- -webkit- */",
+      "transform: translate(50px,100px); /*(从左移动 从顶移动)*/",
+      "transform: rotate(30deg); /*顺时针旋转，负值为逆时针*/",
+      "transform: scale(2,3); /*(宽度,高度)倍数*/",
+      "transform: skew(30deg,20deg); /*在Y轴上倾斜30度，在X轴倾斜20度*/",
+      "transform:matrix(0.866,0.5,-0.5,0.866,0,0); /*利用matrix()方法旋转div元素30°*/",
+      ""
+    ],
+    "description": "2d 转换"
+  },
+  "3dtransform": {
+    "prefix": "gn-css3-3d-transform",
+    "body": [
+      "transform: translate3d(x,y,z);/*单位px*/",
+      "transform: 'translateX(x)|translateY(y)|translateZ(z)';",
+      "transform: scale3d(x,y,z);/*单位倍数*/",
+      "transform: 'scaleX(x)|scaleY(y)|scaleZ(z)';",
+      "transform: rotate3d(x,y,z,angle);/*单位角度*/",
+      "transform: 'rotateX(angle)|rotateY(angle)|rotateZ(angle)';",
+      "transform: perspective(n);/**/",
+      "transform: matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);",
+      "transform-origin: x-axis [y-axis] [z-axis];/* 更改转换元素的基点位置 语义化位置 length % */",
+      "transform-style: 'flat|preserve-3d'; /*指定嵌套元素是怎样在三维空间中呈现*/",
+      "perspective: 'number|none'; /*设置查看一个元素的角度，元素距离视图的距离，以像素计，与perspective-origin一起使用*/",
+      "perspective-origin: x-axis y-axis; /*定义 3D 元素所基于的 X 轴和 Y 轴。允许改变 3D 元素的底部位置*/",
+      "backface-visibility: 'visible|hidden'; /*定义当元素背面向屏幕时是否可见*/"
+    ],
+    "description": "3d 转换"
+  },
+  "transition": {
+    "prefix": "gn-css3-transition",
+    "body": [
+      "transition: property duration timing-function delay; /*CSS属性的名称 过渡时间 时间曲线 延迟时间*/",
+      "transition-property: all; /*规定应用过渡的 CSS 属性的名称*/",
+      "transition-duration: 2s; /*定义过渡效果花费的时间。默认是 0*/",
+      "transition-timing-function: ease; /*规定过渡效果的时间曲线*/",
+      "transition-delay: 2s; /*规定过渡效果何时开始，默认0*/"
+    ],
+    "description": "元素从一种样式逐渐改变为另一种的效果，指定要添加效果的CSS属性及持续时间"
+  },
+  "animation": {
+    "prefix": "gn-css3-animation",
+    "body": [
+      "/*请用百分比来规定变化发生的时间，或用关键词 \"from\" 和 \"to\"，等同于 0% 和 100%。0% 是动画的开始，100% 是动画的完成。*/",
+      "@keyframes /*animation_name*/$1 {",
+      "\t0% {/*css_styles*/$2}",
+      "\t50% {$3}",
+      "\t100% {$4}",
+      "}",
+      "/*selector*/$5 {",
+      "\tanimation: animation_name 3s; /*动画的名称 & 动画的持续时间*/",
+      "\t/*animation-name keyframe的名称*/",
+      "\t/*animation-duration 动画持续时间*/",
+      "\t/*animation-timing-function 速度曲线 linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n)*/",
+      "\t/*animation-fill-mode 动画不播放时要应用到元素的样式 none|forwards|backwards|both|initial|inherit*/",
+      "\t/*animation-delay 负值，请注意动画跳过 s 秒进入动画周期*/",
+      "\t/*animation-iteration-count 规定动画被播放的次数，默认是 1*/",
+      "\t/*animation-direction 是否循环交替反向播放动画 normal|reverse|alternate|alternate-reverse|initial|inherit;*/",
+      "\t/*animation-play-state 动画是否正在运行或暂停 paused|running*/",
+      "}"
+    ],
+    "description": "动画是使元素从一种样式逐渐变化为另一种样式的效果。1.定义 @keyframes 创建动画，2.在指定选择器内定义动画的名称和动画的持续时间"
+  },
+  "mediaquery": {
+    "prefix": "gn-css-media-query",
+    "body": [
+      "/*media type: all-用于所有设备、print-用于打印机和打印预览、screen-用于电脑屏幕，平板电脑，智能手机等、speech-应用于屏幕阅读器等发声设备*/",
+      "/*media feature: min-[device]-width/height、max-[device]-width/height...*/",
+      "@media /*mediatype*/$1 and/*|not|only*/ (/*media feature*/max-width: 480px) {",
+      "\t/*CSS-Code*/",
+      "\t/*selector*/body{/*css style*/}",
+      "}"
+    ],
+    "description": "针对不同的媒体类型定义不同的样式，使用 @media 查询来制作响应式设计"
+  }
+}

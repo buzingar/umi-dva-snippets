@@ -1,72 +1,169 @@
 {
   "import": {
-    "prefix": "zz-imp",
-    "body": "import ${2:moduleName} from '${1:module}'$0"
+    "prefix": "gn-import-from",
+    "body": "import ${2:moduleName} from '${1:module}'$0;"
   },
   "importDestructing": {
-    "prefix": "zz-imd",
-    "body": "import { $2 } from '${1:module}'$0"
+    "prefix": "gn-import-destruct",
+    "body": "import { $2 } from '${1:module}'$0;"
   },
   "import PropTypes": {
-    "prefix": "zz-impt",
-    "body": ["import PropTypes from 'prop-types'", ""]
+    "prefix": "gn-import-proptypes",
+    "body": "import PropTypes from 'prop-types';"
   },
   "exportDefault": {
-    "prefix": "zz-exp",
+    "prefix": "gn-export-default",
     "body": "export default $1$0"
   },
   "forEach": {
-    "prefix": "zz-foreach",
+    "prefix": "gn-array-foreach",
     "body": ["${1:array}.forEach(${2:currentItem} => {", "\t${0}", "})", ""],
     "description": "Creates a forEach statement in ES7 syntax"
   },
   "map": {
-    "prefix": "zz-map",
+    "prefix": "gn-array-map",
     "body": ["${1:array}.map(${2:currentItem} => {", "\t${0}", "})", ""],
     "description": "Creates a map statement in ES7 syntax"
   },
+  "filter": {
+    "prefix": "gn-array-filter",
+    "body": ["${1:array}.filter(${2:currentItem} => {", "\t${0}", "})", ""],
+    "description": "Creates a map statement in ES7 syntax"
+  },
+  "find": {
+    "prefix": "gn-array-find",
+    "body": ["${1:array}.find(${2:currentItem} => {", "\t${0}", "})", ""],
+    "description": "Creates a map statement in ES7 syntax"
+  },
+  "findIndex": {
+    "prefix": "gn-array-findIndex",
+    "body": ["${1:array}.findIndex(${2:currentItem} => {", "\t${0}", "})", ""],
+    "description": "Creates a map statement in ES7 syntax"
+  },
+  "some": {
+    "prefix": "gn-array-some",
+    "body": ["${1:array}.some(${2:currentItem} => {", "\t${0}", "})", ""],
+    "description": "Creates a map statement in ES7 syntax"
+  },
+  "every": {
+    "prefix": "gn-array-every",
+    "body": ["${1:array}.every(${2:currentItem} => {", "\t${0}", "})", ""],
+    "description": "Creates a map statement in ES7 syntax"
+  },
   "destructProps": {
-    "prefix": "zz-cp",
+    "prefix": "gn-props-destruct",
     "body": ["const { $1 } = this.props"],
     "description": "Creates and assigns a local variable using props destructing"
   },
   "destructState": {
-    "prefix": "zz-cs",
+    "prefix": "gn-state-destruct",
     "body": ["const { $1 } = this.state"],
     "description": "Creates and assigns a local variable using state destructing"
   },
   "consoleLog": {
-    "prefix": "zz-clg",
-    "body": "console.log('data:', ${1:object})",
-    "description": "Displays a message in the console"
+    "prefix": "gn-console-log",
+    "body": "console.log('data:', ${1:string})"
+  },
+  "consoleInfo": {
+    "prefix": "gn-console-info",
+    "body": "console.info('data:', ${1:string})"
+  },
+  "consoleWarn": {
+    "prefix": "gn-console-warn",
+    "body": "console.warn('data:', ${1:string})"
+  },
+  "consoleError": {
+    "prefix": "gn-console-error",
+    "body": "console.error('data:', ${1:string})"
+  },
+  "consoleString": {
+    "prefix": "gn-console-string",
+    "body": "console.log('front part %s after part', ${1:string})"
+  },
+  "consoleColor": {
+    "prefix": "gn-console-color",
+    "body": "console.log('normal part %c colored part %s', 'color: #0ff', ${1:string})"
+  },
+  "consolePlaceholder": {
+    "prefix": "gn-console-placeholders",
+    "body": [
+      "console.log('字符串 %s', 'string')",
+      "console.log('整数 %d，值须为整数值，不能为字符串', 100)",
+      "console.log('整数 %i，值须为整数值，不能为字符串', 100)",
+      "console.log('浮点数 %f，不能为字符串', 100.0)",
+      "console.log('对象的链接: %o ', 'http://www.baidu.com')",
+      "console.log('%c css格式字符串', 'color: red')"
+    ],
+    "description": "console placeholders"
+  },
+  "consoleTimeStartEnd": {
+    "prefix": "gn-console-time-start&end",
+    "body": [
+      "console.time('time')",
+      "// 成对使用，用于统计时间",
+      "$0",
+      "console.timeEnd('time')"
+    ],
+    "description": "time 和 timeEnd 一般放在一起用，传入一个参数用来标识起始位置用于统计时间"
+  },
+  "consoleTable": {
+    "prefix": "gn-console-table",
+    "body": "console.table(${0:array})",
+    "description": "将复合类型的数据转为表格显示"
+  },
+  "consoleDir": {
+    "prefix": "gn-console-dir",
+    "body": "console.dir(${0:object})",
+    "description": "按便于阅读和打印的形式将对象打印"
+  },
+  "consoleAssert": {
+    "prefix": "gn-console-assert",
+    "body": [
+      "const val = 1",
+      "console.assert(val === 1, '等于 1')",
+      "console.assert(val !== 1, '不等于 1') // 当表达式为 false 时，则显示错误信息",
+      "console.log('代码会继续往下执行')"
+    ],
+    "description": "断言，用来进行条件判断。当表达式为 false 时，则显示错误信息，不会中断程序执行。"
+  },
+  "consoleGroup": {
+    "prefix": "gn-console-group",
+    "body": [
+      "console.group('分组 1')",
+      "console.log('分组 1-1111')",
+      "console.log('分组 1-2222')",
+      "console.log('分组 1-3333')",
+      "console.groupEnd()"
+    ],
+    "description": "分组输出信息，可以用鼠标折叠/展开"
   },
   "componentDidMount": {
-    "prefix": "zz-lifecycle-cdm",
+    "prefix": "gn-lifecycle-cdm",
     "body": ["componentDidMount() {", "\t$0", "}", ""],
     "description": "Invoked once, only on the client (not on the server), immediately after the initial rendering occurs."
   },
   "shouldComponentUpdate": {
-    "prefix": "zz-lifecycle-scu",
+    "prefix": "gn-lifecycle-scu",
     "body": ["shouldComponentUpdate(nextProps, nextState) {", "\t$0", "}", ""],
     "description": "Invoked before rendering when new props or state are being received. "
   },
   "componentDidUpdate": {
-    "prefix": "zz-lifecycle-cdup",
+    "prefix": "gn-lifecycle-cdup",
     "body": ["componentDidUpdate(prevProps, prevState) {", "\t$0", "}", ""],
     "description": "Invoked immediately after the component's updates are flushed to the DOM."
   },
   "componentWillUnmount": {
-    "prefix": "zz-lifecycle-cwun",
+    "prefix": "gn-lifecycle-cwun",
     "body": ["componentWillUnmount() {", "\t$0", "}", ""],
     "description": "Invoked immediately before a component is unmounted from the DOM."
   },
   "getDerivedStateFromProps": {
-    "prefix": "zz-lifecycle-gdsfp",
+    "prefix": "gn-lifecycle-gdsfp",
     "body": ["static getDerivedStateFromProps(props, state) {", "\t${1}", "}"],
     "description": "Invoked right before calling the render method, both on the initial mount and on subsequent updates."
   },
   "getSnapshotBeforeUpdate": {
-    "prefix": "zz-lifecycle-gsbu",
+    "prefix": "gn-lifecycle-gsbu",
     "body": [
       "getSnapshotBeforeUpdate = (prevProps, prevState) => {",
       "\t$0",
@@ -76,7 +173,7 @@
     "description": "Called right before mutations are made (e.g. before the DOM is updated)"
   },
   "checkZhCNName": {
-    "prefix": "zz-checkZhName",
+    "prefix": "gn-check-zhname",
     "body": [
       "export const checkName = (name, pattern, msg) => {",
       "\tlet ptn = pattern || /^[\\u4E00-\\u9FA5\\uf900-\\ufa2d·\\s\\w]{2,64}$/;",
@@ -90,7 +187,7 @@
     "description": "check zh-cn names pattern"
   },
   "checkPhone": {
-    "prefix": "zz-checkPhone",
+    "prefix": "gn-check-phone",
     "body": [
       "export const checkPhone = (phone, msg) => {",
       "\tconst pattern = /^1[3456789]d{9}$/;",
@@ -104,7 +201,7 @@
     "description": "check cn phone pattern"
   },
   "checkSelfPattern": {
-    "prefix": "zz-checkSelfPattern",
+    "prefix": "gn-check-selfPattern",
     "body": [
       "export const checkVal = (val, pattern, msg) => {",
       "\tconst result = pattern.test(val)",
@@ -116,8 +213,72 @@
     ],
     "description": "check with user provides pattern"
   },
+  "regexp": {
+    "prefix": "gn-util-regexp",
+    "body": [
+      "export const regExp = {",
+      "\temail: '^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$',",
+      "\taccount: '^[a-zA-Z][a-zA-Z0-9_]{4,15}$',",
+      "\tpassword: '^[a-zA-Z]\\w{5,17}$',",
+      "\tstrongPWD: '^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$',",
+      "\tchineseChr: '^[\\u4e00-\\u9fa5]{0,}$',",
+      "}"
+    ]
+  },
+  "learnRegExp": {
+    "prefix": "gn-knowledge-regexp",
+    "body": [
+      "```",
+      "i:执行对大小写不敏感的匹配。",
+      "g:执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。",
+      "m:执行多行匹配。",
+      "",
+      "[abc]:查找方括号之间的任何字符。",
+      "[^abc]:查找任何不在方括号之间的字符。",
+      "[0-9]:查找任何从 0 至 9 的数字。",
+      "[a-z]:查找任何从小写 a 到小写 z 的字符。",
+      "[A-Z]:查找任何从大写 A 到大写 Z 的字符。",
+      "[A-z]:查找任何从大写 A 到小写 z 的字符。",
+      "[adgk]:查找给定集合内的任何字符。",
+      "[^adgk]:查找给定集合外的任何字符。",
+      "(red|blue|green):查找任何指定的选项。",
+      "",
+      ".:查找单个字符，除了换行和行结束符。",
+      "\\w:查找单词字符。",
+      "\\W:查找非单词字符。",
+      "\\d:查找数字。",
+      "\\D:查找非数字字符。",
+      "\\s:查找空白字符。",
+      "\\S:查找非空白字符。",
+      "",
+      "n+ :匹配任何包含至少一个 n 的字符串。",
+      "n* :匹配任何包含零个或多个 n 的字符串。",
+      "n?:匹配任何包含零个或一个 n 的字符串。",
+      "n{X}:匹配包含 X 个 n 的序列的字符串。",
+      "n{X,Y}:匹配包含 X 至 Y 个 n 的序列的字符串。",
+      "n{X,}:匹配包含至少 X 个 n 的序列的字符串。",
+      "n$:匹配任何结尾为 n 的字符串。",
+      "^n:匹配任何开头为 n 的字符串。",
+      "?=n:匹配任何其后紧接指定字符串 n 的字符串。",
+      "?!n:匹配任何其后没有紧接指定字符串 n 的字符串。",
+      "```",
+      "",
+      "var re = /^(d{3})-(d{3,8})$/;",
+      "re.exec('010-12345');",
+      "re.exec('010 12345');",
+      "",
+      "// 非贪婪匹配，尽可能少匹配，加个?",
+      "var re = /^(\\d+?)(0*)$/;",
+      "var re = /^(\\d+)(0*)$/;",
+      "",
+      "// 全局匹配可以多次执行exec()方法来搜索一个匹配的字符串。",
+      "const reg = /[a-zA-Z]+Script/g;",
+      "const str = 'JavaScript, VBScript, JScript and ECMAScript';",
+      "reg.exec(str);"
+    ]
+  },
   "checkId": {
-    "prefix": "zz-checkIdNo",
+    "prefix": "gn-check-idno-func",
     "body": [
       "export const checkCode = (val, msg) => {",
       "\tvar p = /^[1-9]\\d{5}(18|19|20)\\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$/;",
@@ -145,7 +306,7 @@
     "description": "check chinese IdNo"
   },
   "checkEmptyOrBeyond": {
-    "prefix": "zz-checkEmptyOrBeyond",
+    "prefix": "gn-check-emptyOrBeyond",
     "body": [
       "export const checkEmptyOrBeyond = (val, msg, maxLen) => {",
       "\tif (val) {",
@@ -166,7 +327,7 @@
     "description": ""
   },
   "debounce": {
-    "prefix": "zz-debounce",
+    "prefix": "gn-util-debounce",
     "body": [
       "export const debounce = (func, wait, immediate = true) => {",
       "\tlet timeout;",
@@ -193,7 +354,7 @@
     "description": "debounce immediate or delay"
   },
   "throttle": {
-    "prefix": "zz-throttle",
+    "prefix": "gn-util-throttle",
     "body": [
       "export const throttle = (func, wait , type) => {",
       "\tlet previous = 0;",
@@ -224,7 +385,7 @@
     "description": "throttle timestamp or interval"
   },
   "packScript": {
-    "prefix": "zz-pack",
+    "prefix": "gn-util-pack",
     "body": [
       "// make sure the dir which the file in is sibling with src",
       "const fs = require('fs');",
@@ -246,7 +407,7 @@
     "description": "pack script"
   },
   "maxItemOfArray": {
-    "prefix": "zz-maxInArray",
+    "prefix": "gn-util-maxInArray",
     "body": [
       "export const maxItem = arr => Math.max(...arr);",
       "export const maxItemOfArray = arr => arr.sort((a, b) => b - a)[0];"
@@ -254,47 +415,47 @@
     "description": "获取数组中的最大数字"
   },
   "areAllEqual": {
-    "prefix": "zz-arrayItemEqual",
+    "prefix": "gn-util-arrayItemEqual",
     "body": [
       "export const areAllEqual = array => array.every(item => item === array[0]);"
     ],
     "description": "检查数组的所有项是否相等"
   },
   "averageOf": {
-    "prefix": "zz-average",
+    "prefix": "gn-util-average",
     "body": [
       "export const averageOf = (…numbers) => numbers.reduce((a, b) => a + b, 0) / numbers.length;"
     ],
     "description": "求给定数字的平均值"
   },
   "reverseString": {
-    "prefix": "zz-reverse",
+    "prefix": "gn-util-reverse",
     "body": ["export const reverseString = str => […str].reverse().join('');"],
     "description": "反转一个字符串"
   },
   "sumOf": {
-    "prefix": "zz-sum",
+    "prefix": "gn-util-sum",
     "body": [
       "export const sumOf = (…numbers) => numbers.reduce((a, b) => a + b, 0);"
     ],
     "description": "求给定数字的和"
   },
   "findAndReplace": {
-    "prefix": "zz-replaceStr",
+    "prefix": "gn-util-replaceStr",
     "body": [
       "export const findAndReplace = (string, wordToFind, wordToReplace) => string.split(wordToFind).join(wordToReplace);"
     ],
     "description": "在字符串中查找给定的单词，并替换为另一个单词"
   },
   "RGBToHex": {
-    "prefix": "zz-transcolor",
+    "prefix": "gn-util-transcolor",
     "body": [
       "export const RGBToHex = (r, g, b) => ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');"
     ],
     "description": "将RGB模式下的颜色转换为十六进制"
   },
   "shuffle": {
-    "prefix": "zz-shuffle",
+    "prefix": "gn-util-shuffle",
     "body": [
       "export const shuffle = ([…array]) => {",
       "\t let m = array.length;",
@@ -309,49 +470,49 @@
     "description": "随机播放播放项目"
   },
   "removeFalseValues": {
-    "prefix": "zz-rmFalseVal",
+    "prefix": "gn-util-rmFalseVal",
     "body": [
       "export const removeFalseValues = arr => arr.filter(item => item);"
     ],
     "description": "从数组中删除false值，包括false，undefined，NaN，empty"
   },
   "removeDuplicatedValues": {
-    "prefix": "zz-rmDuplicatedVal",
+    "prefix": "gn-util-rmDuplicatedVal",
     "body": [
       "export const removeDuplicatedValues = array => […new Set(array)];"
     ],
     "description": "从数组中删除重复的项"
   },
   "getTimeFromDate": {
-    "prefix": "zz-time",
+    "prefix": "gn-util-time",
     "body": [
       "export const getTimeFromDate = date => date.toTimeString().slice(0, 8);"
     ],
     "description": "以日期对象的字符串形式返回时间"
   },
   "capitalizeAllWords": {
-    "prefix": "zz-capitalize",
+    "prefix": "gn-util-capitalize",
     "body": [
       "export const capitalizeAllWords = str => str.replace(/\b[a-z]/g, char => char.toUpperCase());"
     ],
     "description": "将字符串中所有单词的第一个字母大写"
   },
   "getDayDiff": {
-    "prefix": "zz-getDayDiff",
+    "prefix": "gn-util-getDayDiff",
     "body": [
       "export const getDayDiff = (date1, date2) => ((date2 - date1) / (1000 * 3600 * 24));"
     ],
     "description": "返回两个日期之间以天为单位的差值"
   },
   "radianToDegree": {
-    "prefix": "zz-radianToDegree",
+    "prefix": "gn-util-radianToDegree",
     "body": [
       "export const radianToDegree = radian => (radian * 180.0) / Math.PI;"
     ],
     "description": "把弧度转换成角度"
   },
   "isValidJSON": {
-    "prefix": "zz-valid-json",
+    "prefix": "gn-util-valid-json",
     "body": [
       "export const isValidJSON = string => {",
       "\t try {",
@@ -365,14 +526,14 @@
     "description": "检查给定字符串是否是有效的JSON"
   },
   "toWords": {
-    "prefix": "zz-toWords",
+    "prefix": "gn-util-toWords",
     "body": [
       "export const toWords = (string, pattern = /[^a-zA-Z-]+/) => string.split(pattern).filter(item => item);"
     ],
     "description": "将给定的字符串转换为单词数组"
   },
   "scrollToTop": {
-    "prefix": "zz-scrollToTop",
+    "prefix": "gn-util-scrollToTop",
     "body": [
       "const scrollToTop = () => {",
       "\tconst t = document.documentElement.scrollTop || document.body.scrollTop;",
@@ -385,14 +546,14 @@
     "description": "位于长页面的底部，并且想快速向上滚动至顶部"
   },
   "isValidNumber": {
-    "prefix": "zz-isValidNumber",
+    "prefix": "gn-util-isValidNumber",
     "body": [
       "export const isValidNumber = n => !isNaN(parseFloat(n)) && isFinite(n) && Number(n) === n;"
     ],
     "description": "验证数字是否有效"
   },
   "makeId": {
-    "prefix": "zz-makeId",
+    "prefix": "gn-util-makeId",
     "body": [
       "export const makeId = (len) => {",
       "\tlet text = '';",
@@ -406,14 +567,14 @@
     "description": "生成随机字符串"
   },
   "flattenArray": {
-    "prefix": "zz-flatten-array",
+    "prefix": "gn-util-flatten-array",
     "body": [
       "export const deepFlatten = arr => [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));"
     ],
     "description": "深度平铺一个数组"
   },
   "allPropTypesFormat": {
-    "prefix": "zz-proptypes",
+    "prefix": "gn-react-proptypes",
     "body": [
       "// 特定的JS类型",
       "optionalArray: PropTypes.array,",
@@ -450,7 +611,7 @@
     "description": "all Prop-Types types, make quicker decisions"
   },
   "pureFunctionComponent": {
-    "prefix": "zz-purefunc",
+    "prefix": "gn-react-purefunc",
     "body": [
       "import React, { useState, useEffect } from 'react';",
       "import PropTypes from 'prop-types';",
@@ -489,7 +650,7 @@
     "description": "create pure function component"
   },
   "reactClassExportComponent": {
-    "prefix": "zz-page-normal",
+    "prefix": "gn-react-page-normal",
     "body": [
       "import React, { PureComponent } from 'react';",
       "import { connect } from 'dva';",
@@ -503,7 +664,7 @@
       "class ${1:${TM_FILENAME_BASE}} extends PureComponent {",
       "\t// 不需要可以先注释，建议进行类型检查",
       "\tstatic propTypes = {",
-      "\t\t// zz-props -> generate all template props",
+      "\t\t// gn-props -> generate all template props",
       "\t}",
       "",
       "\tstatic defaultProps = {",
@@ -526,11 +687,11 @@
       "\t\t})",
       "\t}",
       "",
-      "\t// need shouldComponentUpdate? type & enter zz-scu",
+      "\t// need shouldComponentUpdate? type & enter gn-scu",
       "",
-      "\t// need componentDidUpdate? type & enter zz-cdup",
+      "\t// need componentDidUpdate? type & enter gn-cdup",
       "",
-      "\t// need componentWillUnmount? type & enter zz-cwun",
+      "\t// need componentWillUnmount? type & enter gn-cwun",
       "",
       "\trender() {",
       "\t\t// const { key } = this.state;",
@@ -559,7 +720,7 @@
     "description": "Creates a React component class with ES7 module system && umi && dva && antd"
   },
   "dvaModels": {
-    "prefix": "zz-model-normal",
+    "prefix": "gn-react-model-normal",
     "body": [
       "// import { message } from 'antd';",
       "import { getDemoList /* , methodNames */} from '../services/${1:${TM_FILENAME_BASE}}';",
@@ -616,7 +777,7 @@
     "description": "create models"
   },
   "dvaServices": {
-    "prefix": "zz-service-normal",
+    "prefix": "gn-react-service-normal",
     "body": [
       "import { post, get } from '@ali-whale/fetch-web';",
       "",

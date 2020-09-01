@@ -1,4 +1,6 @@
-### vscode 插件开发步骤
+# vscode 插件开发步骤
+
+## 总览
 
 一、搭建环境，准备工作
 
@@ -6,13 +8,34 @@
 vscode 团队，为插件开发提供了一个工具，先全局安装这个，然后执行 `yo code` 来开始我们的工作。
 
 ```bash
-$ npm install -g yo generator-code
-$ yo code
+npm install -g yo generator-code
+yo code
 ```
 
-> https://cloud.tencent.com/developer/article/1354481
+二、编写 `snippets`/`snippets.json` 文件
 
-### Prefix => Method
+三、本地打包
+
+```bash
+// 更改package.json中的 version 版本号
+$ vsce package
+```
+
+> <https://cloud.tencent.com/developer/article/1354481>
+
+## 规划
+
+1. js 常用片段
+
+2. css 常用片段
+
+3. html 常用片段
+
+4. 正则表达式
+
+5. 其它
+
+## Prefix => Method
 
 > make sure you are in the right type file
 
@@ -190,17 +213,17 @@ export default {
     clearData: () => ({ ...initData }),
   },
   //subscriptions: {
-  //	setup({ dispatch, history }) {
-  //		return history.listen(({ pathname }) => {
-  //			if( pathname && pathname === '/' ) {
-  //				// do something when app init
-  //				dispatch({
-  //					type: '',
-  //					payload: {}
-  //				})
-  //			}
-  //		})
-  //	}
+  // setup({ dispatch, history }) {
+  //  return history.listen(({ pathname }) => {
+  //   if( pathname && pathname === '/' ) {
+  //    // do something when app init
+  //    dispatch({
+  //     type: '',
+  //     payload: {}
+  //    })
+  //   }
+  //  })
+  // }
   //}
 };
 ```

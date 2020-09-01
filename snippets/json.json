@@ -1,0 +1,15 @@
+{
+  "json template": {
+    "prefix": "gn-json-snippet-template",
+    "body": [
+      "\"$1\":{",
+      "\t\"prefix\":\"$2\",",
+      "\t\"body\":[",
+      "\t\t\"$3\",",
+      "\t],",
+      "\"description\":\"$0\"",
+      "}"
+    ],
+    "description": "json snippet"
+  }
+}
