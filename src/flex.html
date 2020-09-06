@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Box</title>
+    <style>
+      .line {
+        display: flex;
+        width: 100%;
+        height: 200px;
+      }
+      .item-a,
+      .item-b,
+      .item-c {
+        background: #efd;
+        color: blueviolet;
+        border: 1px dashed #ee33ee;
+        /* flex-basis: 100px; */
+        text-align: center;
+      }
+      .item-a {
+        flex-grow: 1;
+      }
+      .item-b {
+        flex-grow: 1;
+      }
+      .item-c {
+        flex-grow: 3;
+      }
+
+      .item-d,
+      .item-e,
+      .item-f,
+      .item-g {
+        background: #24adf1;
+        border: 4px dotted #90ad1f;
+        text-align: center;
+        flex-basis: 40%;
+      }
+      .item-d {
+        flex-shrink: 1;
+      }
+      .item-e {
+        flex-shrink: 1;
+      }
+      .item-f {
+        flex-shrink: 4;
+      }
+      .item-g {
+        flex-shrink: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="line">
+      <div class="item-a">a</div>
+      <div class="item-b">b</div>
+      <div class="item-c">c</div>
+    </div>
+    <div class="line">
+      <div class="item-d">d</div>
+      <div class="item-e">e</div>
+      <div class="item-f">f</div>
+      <div class="item-g">g</div>
+    </div>
+  </body>
+</html>

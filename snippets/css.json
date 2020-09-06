@@ -134,8 +134,10 @@
   "boxShadow": {
     "prefix": "gn-css3-box-shadow",
     "body": [
-      "/*box-shadow: h-shadow水平 v-shadow垂直 blur模糊距离 spread阴影的大小 color阴影的颜色 inset内侧阴影;*/",
-      "box-shadow: $1 $2 $3 $4 #$5"
+      "/*box-shadow: h-shadow水平 v-shadow垂直 blur-radius模糊半径 spread-radius扩散半径 color阴影颜色 inset内侧阴影;*/",
+      "/*blur-radius 值越大，模糊面积越大，阴影就越大越淡。 不能为负值。默认为0，此时阴影边缘锐利。*/",
+      "/*spread-radius 取正值时，阴影扩大；取负值时，阴影收缩。默认为0，此时阴影与元素同样大。需考虑inset。*/",
+      "box-shadow: $1px $2px $3px $4px rgba($5,$6,$7,$8);"
     ],
     "description": "box-shadow"
   },
@@ -213,34 +215,72 @@
     ],
     "description": "css3 字体"
   },
+  "singleTranslate": {
+    "prefix": "gn-css3-translate",
+    "body": [
+      "/*translate: none; 不平移*/",
+      "/*translate: 100px;*/",
+      "translate: 100px 5%;",
+      "/*translate: 50% 100px 5rem;*/",
+      "/*类似还有 scale 和 rotate */"
+    ],
+    "description": "独立于transform属性，单独声明平移变换"
+  },
   "2dtransform": {
     "prefix": "gn-css3-2d-transform",
     "body": [
+      "/*https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function*/",
       "/*转换的效果是让某个元素改变形状，大小和位置 -ms- -webkit- */",
       "transform: translate(50px,100px); /*(从左移动 从顶移动)*/",
+      "transform: translateX(50px) translateY(100px);",
       "transform: rotate(30deg); /*顺时针旋转，负值为逆时针*/",
       "transform: scale(2,3); /*(宽度,高度)倍数*/",
+      "transform: scaleX(2) scaleY(3);",
       "transform: skew(30deg,20deg); /*在Y轴上倾斜30度，在X轴倾斜20度*/",
-      "transform:matrix(0.866,0.5,-0.5,0.866,0,0); /*利用matrix()方法旋转div元素30°*/",
-      ""
+      "transform: skewX(30deg) skewY(1.1rad);",
+      "transform: matrix(0.866,0.5,-0.5,0.866,0,0); /*利用matrix()方法旋转div元素30°*/",
+      "/*transform: none|inherit|initial|unset;*/",
+      "",
+      "/*<length>|<percentage>|left, center, right, top, bottom*/",
+      "/*第三个值必须是<length>。它始终代表Z轴偏移量*/",
+      "transform-origin: 50% 50% 0;",
+      "/*布局框*/",
+      "transform-box: border-box|fill-box|view-box;",
+      "/*设置元素的子元素是位于 3D 空间中还是平面中，如果选择平面，元素的子元素将不会有 3D 的遮挡关系*/",
+      "transform-style: flat|preserve-3d;"
     ],
     "description": "2d 转换"
   },
   "3dtransform": {
     "prefix": "gn-css3-3d-transform",
     "body": [
+      "/*https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function*/",
       "transform: translate3d(x,y,z);/*单位px*/",
+      "",
       "transform: 'translateX(x)|translateY(y)|translateZ(z)';",
+      "",
       "transform: scale3d(x,y,z);/*单位倍数*/",
+      "",
       "transform: 'scaleX(x)|scaleY(y)|scaleZ(z)';",
+      "",
       "transform: rotate3d(x,y,z,angle);/*单位角度*/",
+      "",
       "transform: 'rotateX(angle)|rotateY(angle)|rotateZ(angle)';",
+      "",
       "transform: perspective(n);/**/",
+      "",
       "transform: matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);",
+      "",
       "transform-origin: x-axis [y-axis] [z-axis];/* 更改转换元素的基点位置 语义化位置 length % */",
+      "",
       "transform-style: 'flat|preserve-3d'; /*指定嵌套元素是怎样在三维空间中呈现*/",
+      "",
+      "/*指定了观察者与 z=0 平面的距离，使具有三维位置变换的元素产生透视效果。*/",
+      "/*z>0 的三维元素比正常大，而 z<0 时则比正常小，大小程度由该属性的值决定。*/",
       "perspective: 'number|none'; /*设置查看一个元素的角度，元素距离视图的距离，以像素计，与perspective-origin一起使用*/",
+      "",
       "perspective-origin: x-axis y-axis; /*定义 3D 元素所基于的 X 轴和 Y 轴。允许改变 3D 元素的底部位置*/",
+      "",
       "backface-visibility: 'visible|hidden'; /*定义当元素背面向屏幕时是否可见*/"
     ],
     "description": "3d 转换"
@@ -248,11 +288,18 @@
   "transition": {
     "prefix": "gn-css3-transition",
     "body": [
-      "transition: property duration timing-function delay; /*CSS属性的名称 过渡时间 时间曲线 延迟时间*/",
-      "transition-property: all; /*规定应用过渡的 CSS 属性的名称*/",
-      "transition-duration: 2s; /*定义过渡效果花费的时间。默认是 0*/",
-      "transition-timing-function: ease; /*规定过渡效果的时间曲线*/",
-      "transition-delay: 2s; /*规定过渡效果何时开始，默认0*/"
+      "/*CSS属性的名称 过渡时间 时间曲线 延迟时间*/",
+      "transition: property duration timing-function delay;",
+      "/*规定应用过渡的 CSS 属性的名称，none: 没有过渡动画，all: 所有可被动画的属性，<custom-ident>*/",
+      "transition-property: all;",
+      "/*定义过渡效果花费的时间。默认是 0s。也可以是ms*/",
+      "transition-duration: 2s;",
+      "/*规定过渡效果何时开始，默认0s，也可以是ms*/",
+      "transition-delay: 2s;",
+      "/*规定过渡效果的时间曲线，linear|<cubic-bezier-timing-function>|<step-timing-function>*/",
+      "/*ease | ease-in | ease-out | ease-in-out | cubic-bezier(0.1, 0.7, 1.0, 0.1)*/",
+      "/*step-start | step-end | steps(<integer, [jump-start | jump-end | jump-none | jump-both | start | end]>)*/",
+      "transition-timing-function: linear;"
     ],
     "description": "元素从一种样式逐渐改变为另一种的效果，指定要添加效果的CSS属性及持续时间"
   },
@@ -261,20 +308,30 @@
     "body": [
       "/*请用百分比来规定变化发生的时间，或用关键词 \"from\" 和 \"to\"，等同于 0% 和 100%。0% 是动画的开始，100% 是动画的完成。*/",
       "@keyframes /*animation_name*/$1 {",
-      "\t0% {/*css_styles*/$2}",
-      "\t50% {$3}",
-      "\t100% {$4}",
+      "\t0% {/*css_styles*/}",
+      "\t50% {/*css_styles*/}",
+      "\t100% {/*css_styles*/}",
       "}",
-      "/*selector*/$5 {",
-      "\tanimation: animation_name 3s; /*动画的名称 & 动画的持续时间*/",
-      "\t/*animation-name keyframe的名称*/",
-      "\t/*animation-duration 动画持续时间*/",
-      "\t/*animation-timing-function 速度曲线 linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n)*/",
-      "\t/*animation-fill-mode 动画不播放时要应用到元素的样式 none|forwards|backwards|both|initial|inherit*/",
-      "\t/*animation-delay 负值，请注意动画跳过 s 秒进入动画周期*/",
-      "\t/*animation-iteration-count 规定动画被播放的次数，默认是 1*/",
-      "\t/*animation-direction 是否循环交替反向播放动画 normal|reverse|alternate|alternate-reverse|initial|inherit;*/",
-      "\t/*animation-play-state 动画是否正在运行或暂停 paused|running*/",
+      "/*selector*/$2 {",
+      "\t/*animation: $3s $1; 动画的持续时间 动画的名称*/",
+      "\t/*动画持续时间*/",
+      "\tanimation-duration: $3s;",
+      "\t/*速度曲线 linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n)*/",
+      "\t/*step-start | step-end | steps(<integer>[, <step-position>]?)*/",
+      "\t/*jump-start | jump-end | jump-none | jump-both | start | end*/",
+      "\tanimation-timing-function: linear;",
+      "\t/*若为负值，请注意动画跳过 s 秒进入动画周期*/",
+      "\tanimation-delay: $4s;",
+      "\t/*规定动画被播放的次数，默认是 1*/",
+      "\tanimation-iteration-count: 1;",
+      "\t/*是否循环交替反向播放动画 normal|reverse|alternate|alternate-reverse|initial|inherit*/",
+      "\tanimation-direction: normal;",
+      "\t/*动画不播放时要应用到元素的样式 none|forwards|backwards|both|initial|inherit*/",
+      "\tanimation-fill-mode: forwards;",
+      "\t/*动画是否正在运行或暂停 paused|running*/",
+      "\tanimation-play-state: running;",
+      "\t/*keyframe的名称*/",
+      "\tanimation-name: $1;",
       "}"
     ],
     "description": "动画是使元素从一种样式逐渐变化为另一种样式的效果。1.定义 @keyframes 创建动画，2.在指定选择器内定义动画的名称和动画的持续时间"

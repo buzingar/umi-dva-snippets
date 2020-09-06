@@ -31,7 +31,7 @@
       },
       {
         "language": "javascriptreact",
-        "path": "./snippets/js.json"
+        "path": "./snippets/react.json"
       },
       {
         "language": "css",
@@ -44,6 +44,10 @@
       {
         "language": "markdown",
         "path": "./snippets/md.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/html.json"
       }
     ]
   }
