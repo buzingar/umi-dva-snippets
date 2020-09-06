@@ -1,0 +1,28 @@
+* {
+  /*https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function*/
+  /*转换的效果是让某个元素改变形状，大小和位置 -ms- -webkit- */
+  transform: translate(50px, 100px); /*(从左移动 从顶移动)*/
+  transform: translateX(50px) translateY(100px);
+  transform: rotate(30deg); /*顺时针旋转，负值为逆时针*/
+  transform: scale(2, 3); /*(宽度,高度)倍数*/
+  transform: scaleX(2) scaleY(3);
+  transform: skew(30deg, 20deg); /*在Y轴上倾斜30度，在X轴倾斜20度*/
+  transform: skewX(30deg) skewY(1.1rad);
+  transform: matrix(
+    0.866,
+    0.5,
+    -0.5,
+    0.866,
+    0,
+    0
+  ); /*利用matrix()方法旋转div元素30°*/
+  /*transform: none|inherit|initial|unset;*/
+
+  /*<length>|<percentage>|left, center, right, top, bottom*/
+  /*第三个值必须是<length>。它始终代表Z轴偏移量*/
+  transform-origin: 50% 50% 0;
+  /*布局框*/
+  transform-box: border-box /*|fill-box|view-box*/;
+  /*设置元素的子元素是位于 3D 空间中还是平面中，如果选择平面，元素的子元素将不会有 3D 的遮挡关系*/
+  transform-style: flat /*|preserve-3d*/;
+}

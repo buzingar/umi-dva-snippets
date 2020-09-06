@@ -245,9 +245,9 @@
       "/*第三个值必须是<length>。它始终代表Z轴偏移量*/",
       "transform-origin: 50% 50% 0;",
       "/*布局框*/",
-      "transform-box: border-box|fill-box|view-box;",
+      "transform-box: border-box/*|fill-box|view-box*/;",
       "/*设置元素的子元素是位于 3D 空间中还是平面中，如果选择平面，元素的子元素将不会有 3D 的遮挡关系*/",
-      "transform-style: flat|preserve-3d;"
+      "transform-style: flat/*|preserve-3d*/;"
     ],
     "description": "2d 转换"
   },
