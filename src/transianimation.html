@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>transaction && animation</title>
+    <style>
+      .container {
+        width: 100vw;
+        height: 100vh;
+        background-color: aquamarine;
+      }
+      .box {
+        width: 200px;
+        height: 100px;
+        border: 1px solid #f00;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* 持续时间 */
+        transition-duration: 3s;
+        /* 加速度曲线 */
+        transition-timing-function: steps(5, end);
+        /* 延迟多久执行 */
+        transition-delay: 0.5s;
+        /* 对什么属性添加过渡效果 */
+        transition-property: all;
+        /* 施加动效的基点 */
+        transform-origin: left top;
+      }
+      .one {
+        background-color: #1abc9c;
+      }
+      .one:hover {
+        background-color: #7f8c8d;
+        transform: translateX(100px) rotate(45deg) scale(1.6, 1.2);
+        width: 300px;
+      }
+      .two {
+        background-color: #f1c40f;
+      }
+      .three {
+        background-color: #f39c12;
+      }
+      .four {
+        background-color: #2980b9;
+      }
+      .five {
+        background-color: #8e44ad;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box one">A</div>
+      <div class="box two">B</div>
+      <div class="box three">C</div>
+      <div class="box four">D</div>
+      <div class="box five">E</div>
+    </div>
+  </body>
+</html>

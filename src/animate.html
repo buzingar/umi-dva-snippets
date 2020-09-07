@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation</title>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.0/animate.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+      }
+      .main {
+        width: 70vw;
+        background: rgba(0, 0, 0, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-wrapper {
+        width: 30vw;
+        background: rgba(100, 100, 100, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .buttons {
+        background: rgba(100, 100, 100, 1);
+        height: 95vh;
+        overflow: scroll;
+      }
+      /* 先画一个正方形 */
+      .heart {
+        position: relative;
+        /* top: 100px;
+        left: 50%; */
+        width: 100px;
+        height: 100px;
+        background-color: tomato;
+        /* 最后逆时针选择45度 */
+        transform: rotate(-45deg) !important;
+      }
+      /* 画一个圆，绝对定位到正方形一边 */
+      .heart:before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        /* background-color: blue; */
+        background-color: tomato;
+      }
+      /* 画一个圆，绝对定位到正方形一边 */
+      .heart:after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 50px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        /* background-color: yellow; */
+        background-color: tomato;
+      }
+
+      .pixel-heart {
+        position: absolute;
+        /* left: 50%;
+        top: 50%; */
+        width: 105px;
+        height: 105px;
+        margin: -52.5px 0 0 -52.5px;
+      }
+      .pixel-heart::before {
+        content: "";
+        display: block;
+        transition: all 400ms;
+        width: 15px;
+        height: 15px;
+        margin: -15px 0 0 -15px;
+        box-shadow: 30px 15px #8e1a19, 45px 15px #ac0500, 75px 15px #f73f0c,
+          90px 15px #fa5f27, 15px 30px #740100, 30px 30px #8e0500,
+          45px 30px #8e1918, 60px 30px #ca1300, 75px 30px #f34f2b,
+          90px 30px #df351f, 105px 30px #f77c2a, 15px 45px #4b0000,
+          30px 45px #690100, 45px 45px #8e0f0b, 60px 45px #bf1000,
+          75px 45px #f84010, 90px 45px #f04222, 105px 45px #fa5724,
+          15px 60px #451312, 30px 60px #5a0100, 45px 60px #840e0c,
+          60px 60px #a51d1a, 75px 60px #ed2805, 90px 60px #d9321e,
+          105px 60px #f44622, 30px 75px #3b0000, 45px 75px #5d1a1b,
+          60px 75px #8e1a19, 75px 75px #a80700, 90px 75px #b90a00,
+          45px 90px #3d0000, 60px 90px #551415, 75px 90px #670100,
+          60px 105px #340000;
+        animation: pulse 1.2s steps(1) infinite;
+      }
+
+      .section {
+        margin: 10px 0;
+        border: 1px solid #000;
+        padding: 16px;
+      }
+      .title {
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="heart animate__animated"></div>
+      </div>
+      <div class="btn-wrapper">
+        <button type="button" onclick="removeClass()">remove</button>
+        <div class="buttons"></div>
+      </div>
+    </div>
+    <script>
+      (function button(obj) {
+        console.log(obj);
+        var keys = Object.keys(obj);
+        // var values = Object.values(obj);
+        // console.log(keys, values);
+        var node = document.querySelector(".buttons");
+        keys.forEach((item) => {
+          var element = document.createElement("div");
+          element.setAttribute("class", "section");
+          var divNode = document.createElement("div");
+          divNode.setAttribute("class", "title");
+          divNode.innerText = item;
+          element.appendChild(divNode);
+          obj[item].forEach((e) => {
+            var btnNode = document.createElement("button");
+            btnNode.setAttribute("type", "button");
+            btnNode.setAttribute("onclick", "addClass('" + e + "')");
+            btnNode.innerText = e;
+            element.appendChild(btnNode);
+          });
+          node.appendChild(element);
+        });
+      })({
+        "Attention seekers": [
+          "bounce",
+          "flash",
+          "pulse",
+          "rubberBand",
+          "shakeX",
+          "shakeY",
+          "headShake",
+          "swing",
+          "tada",
+          "wobble",
+          "jello",
+          "heartBeat",
+        ],
+        "Back entrances": [
+          "backInDown",
+          "backInLeft",
+          "backInRight",
+          "backInUp",
+        ],
+        "Back exits": [
+          "backOutDown",
+          "backOutLeft",
+          "backOutRight",
+          "backOutUp",
+        ],
+        "Bouncing entrances": [
+          "bounceIn",
+          "bounceInDown",
+          "bounceInLeft",
+          "bounceInRight",
+          "bounceInUp",
+        ],
+        "Bouncing exits": [
+          "bounceOut",
+          "bounceOutDown",
+          "bounceOutLeft",
+          "bounceOutRight",
+          "bounceOutUp",
+        ],
+        "Fading entrances": [
+          "fadeIn",
+          "fadeInDown",
+          "fadeInDownBig",
+          "fadeInLeft",
+          "fadeInLeftBig",
+          "fadeInRight",
+          "fadeInRightBig",
+          "fadeInUp",
+          "fadeInUpBig",
+          "fadeInTopLeft",
+          "fadeInTopRight",
+          "fadeInBottomLeft",
+          "fadeInBottomRight",
+        ],
+        "Fading exits": [
+          "fadeOut",
+          "fadeOutDown",
+          "fadeOutDownBig",
+          "fadeOutLeft",
+          "fadeOutLeftBig",
+          "fadeOutRight",
+          "fadeOutRightBig",
+          "fadeOutUp",
+          "fadeOutUpBig",
+          "fadeOutTopLeft",
+          "fadeOutTopRight",
+          "fadeOutBottomRight",
+          "fadeOutBottomLeft",
+        ],
+        Flippers: ["flip", "flipInX", "flipInY", "flipOutX", "flipOutY"],
+        Lightspeed: [
+          "lightSpeedInRight",
+          "lightSpeedInLeft",
+          "lightSpeedOutRight",
+          "lightSpeedOutLeft",
+        ],
+        "Rotating entrances": [
+          "rotateIn",
+          "rotateInDownLeft",
+          "rotateInDownRight",
+          "rotateInUpLeft",
+          "rotateInUpRight",
+        ],
+        "Rotating exits": [
+          "rotateOut",
+          "rotateOutDownLeft",
+          "rotateOutDownRight",
+          "rotateOutUpLeft",
+          "rotateOutUpRight",
+        ],
+        Specials: ["hinge", "jackInTheBox", "rollIn", "rollOut"],
+        "Zooming entrances": [
+          "zoomIn",
+          "zoomInDown",
+          "zoomInLeft",
+          "zoomInRight",
+          "zoomInUp",
+        ],
+        "Zooming exits": [
+          "zoomOut",
+          "zoomOutDown",
+          "zoomOutLeft",
+          "zoomOutRight",
+          "zoomOutUp",
+        ],
+        "Sliding entrances": [
+          "slideInDown",
+          "slideInLeft",
+          "slideInRight",
+          "slideInUp",
+        ],
+        "Sliding exits": [
+          "slideOutDown",
+          "slideOutLeft",
+          "slideOutRight",
+          "slideOutUp",
+        ],
+      });
+
+      function addClass(name) {
+        console.log("%c%s", "background-color:#e3f1a0;color: #f0f", name);
+        var node = document.querySelector(".heart");
+        node.classList.add("animate__" + name);
+        setTimeout(() => removeClass(), 3000);
+      }
+
+      function removeClass() {
+        document
+          .querySelector(".heart")
+          .setAttribute("class", "heart animate__animated");
+
+        var classes = document.querySelector(".heart").getAttribute("class");
+        console.log(classes);
+      }
+    </script>
+  </body>
+</html>

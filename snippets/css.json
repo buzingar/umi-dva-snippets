@@ -10,16 +10,16 @@
   "showborderstyle": {
     "prefix": "gn-css-border-style",
     "body": [
-      "/* none:无边框。与任何指定的border-width值无关 */",
-      "/* hidden:隐藏边框。IE不支持 */",
-      "/* dotted:在MAC平台上IE4+与WINDOWS和UNIX平台上IE5.5+为点线。否则为实线（常用） */",
-      "/* dashed:在MAC平台上IE4+与WINDOWS和UNIX平台上IE5.5+为虚线。否则为实线（常用） */",
-      "/* solid:实线边框（常用） */",
-      "/* double:双线边框。两条单线与其间隔的和等于指定的border-width值 */",
-      "/* groove:根据border-color的值画3D凹槽 */",
-      "/* ridge:根据border-color的值画菱形边框 */",
-      "/* inset:根据border-color的值画3D凹边 */",
-      "/* outset:根据border-color的值画3D凸边 */"
+      "/* none: 无边框。与任何指定的border-width值无关 */",
+      "/* hidden: 隐藏边框。IE不支持 */",
+      "/* dotted: 在MAC平台上IE4+与WINDOWS和UNIX平台上IE5.5+为点线。否则为实线（常用） */",
+      "/* dashed: 在MAC平台上IE4+与WINDOWS和UNIX平台上IE5.5+为虚线。否则为实线（常用） */",
+      "/* solid: 实线边框（常用） */",
+      "/* double: 双线边框。两条单线与其间隔的和等于指定的border-width值 */",
+      "/* groove: 根据border-color的值画3D凹槽 */",
+      "/* ridge: 根据border-color的值画菱形边框 */",
+      "/* inset: 根据border-color的值画3D凹边 */",
+      "/* outset: 根据border-color的值画3D凸边 */"
     ],
     "description": "border style"
   },
@@ -34,10 +34,10 @@
     "prefix": "gn-css3-background",
     "body": [
       "/*background: [background-color] | [background-image] | [background-position][/background-size] | [background-repeat] | [background-attachment] | [background-clip] | [background-origin],...*/",
-      "/*background-size指定背景图像的大小，是相对于父元素的宽度和高度的百分比的大小；*/",
-      "/*background-origin 属性指定了背景图像的位置区域。content-box, padding-box,和 border-box区域；*/",
-      "/*background-origin属性指定background-position属性应该是相对位置。注意如果背景图像background-attachment是\"固定\"，这个属性没有任何效果。*/",
-      "/*background-clip背景剪裁属性是从指定位置开始绘制。*/",
+      "/*background-size 指定背景图像的大小，是相对于父元素的宽度和高度的百分比的大小；*/",
+      "/*background-origin 属性指定了背景图像的位置区域。content-box, padding-box 和 border-box区域；*/",
+      "/*background-origin 属性指定background-position属性应该是相对位置。注意如果背景图像background-attachment是\"固定\"，这个属性没有任何效果。*/",
+      "/*background-clip 背景剪裁属性是从指定位置开始绘制。*/",
       "background: $1 url('$2') /*left top*/$3 / /*100% 100%*/$4 /*no-repeat*/$5 /*fixed*/$6 /*content-box*/$7 /*border-box*/$8"
     ],
     "description": "css3 background"
@@ -77,9 +77,11 @@
   "flexcenter": {
     "prefix": "gn-css-flex-center",
     "body": [
-      "display: flex;",
-      "justify-content: center;",
-      "align-items: center;"
+      "$1 {",
+      "\tdisplay: flex;",
+      "\tjustify-content: center;",
+      "\talign-items: center;",
+      "}"
     ],
     "description": "center by flex"
   },
@@ -216,38 +218,42 @@
     "description": "css3 字体"
   },
   "singleTranslate": {
-    "prefix": "gn-css3-translate",
+    "prefix": "gn-css3-translate-scale-rotate",
     "body": [
       "/*translate: none; 不平移*/",
       "/*translate: 100px;*/",
-      "translate: 100px 5%;",
+      "/*translate: 100px 5%;*/",
       "/*translate: 50% 100px 5rem;*/",
-      "/*类似还有 scale 和 rotate */"
+      "/*类似还有 scale 和 rotate */",
+      "/*scale: 1 2;*/",
+      "/*rotate: 30deg;*/"
     ],
-    "description": "独立于transform属性，单独声明平移变换"
+    "description": "独立于transform属性，单独声明平移、旋转、缩放变换"
   },
   "2dtransform": {
     "prefix": "gn-css3-2d-transform",
     "body": [
-      "/*https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function*/",
-      "/*转换的效果是让某个元素改变形状，大小和位置 -ms- -webkit- */",
-      "transform: translate(50px,100px); /*(从左移动 从顶移动)*/",
-      "transform: translateX(50px) translateY(100px);",
-      "transform: rotate(30deg); /*顺时针旋转，负值为逆时针*/",
-      "transform: scale(2,3); /*(宽度,高度)倍数*/",
-      "transform: scaleX(2) scaleY(3);",
-      "transform: skew(30deg,20deg); /*在Y轴上倾斜30度，在X轴倾斜20度*/",
-      "transform: skewX(30deg) skewY(1.1rad);",
-      "transform: matrix(0.866,0.5,-0.5,0.866,0,0); /*利用matrix()方法旋转div元素30°*/",
-      "/*transform: none|inherit|initial|unset;*/",
+      "$1 {",
+      "\t/*https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function*/",
+      "\t/*转换的效果是让某个元素改变形状，大小和位置 -ms- -webkit- */",
+      "\t/*transform: translate(50px,100px); (从左移动 从顶移动)*/",
+      "\t/*transform: translateX(50px) translateY(100px);*/",
+      "\t/*transform: rotate(30deg); 顺时针旋转，负值为逆时针*/",
+      "\t/*transform: scale(2,3); (宽度,高度)倍数*/",
+      "\t/*transform: scaleX(2) scaleY(3);*/",
+      "\t/*transform: skew(30deg,20deg); 在Y轴上倾斜30度，在X轴倾斜20度*/",
+      "\t/*transform: skewX(30deg) skewY(1.1rad);*/",
+      "\t/*transform: matrix(0.866,0.5,-0.5,0.866,0,0); 利用matrix()方法旋转div元素30°*/",
+      "\t/*transform: none|inherit|initial|unset;*/",
       "",
-      "/*<length>|<percentage>|left, center, right, top, bottom*/",
-      "/*第三个值必须是<length>。它始终代表Z轴偏移量*/",
-      "transform-origin: 50% 50% 0;",
-      "/*布局框*/",
-      "transform-box: border-box/*|fill-box|view-box*/;",
-      "/*设置元素的子元素是位于 3D 空间中还是平面中，如果选择平面，元素的子元素将不会有 3D 的遮挡关系*/",
-      "transform-style: flat/*|preserve-3d*/;"
+      "\t/*<length>|<percentage>|left, center, right, top, bottom*/",
+      "\t/*第三个值必须是<length>。它始终代表Z轴偏移量*/",
+      "\t/*transform-origin: 50% 50% 0;*/",
+      "\t/*布局框*/",
+      "\t/*transform-box: border-box|fill-box|view-box;*/",
+      "\t/*设置元素的子元素是位于 3D 空间中还是平面中，如果选择平面，元素的子元素将不会有 3D 的遮挡关系*/",
+      "\t/*transform-style: flat|preserve-3d;*/",
+      "}"
     ],
     "description": "2d 转换"
   },
@@ -288,18 +294,20 @@
   "transition": {
     "prefix": "gn-css3-transition",
     "body": [
-      "/*CSS属性的名称 过渡时间 时间曲线 延迟时间*/",
-      "transition: property duration timing-function delay;",
-      "/*规定应用过渡的 CSS 属性的名称，none: 没有过渡动画，all: 所有可被动画的属性，<custom-ident>*/",
-      "transition-property: all;",
-      "/*定义过渡效果花费的时间。默认是 0s。也可以是ms*/",
-      "transition-duration: 2s;",
-      "/*规定过渡效果何时开始，默认0s，也可以是ms*/",
-      "transition-delay: 2s;",
-      "/*规定过渡效果的时间曲线，linear|<cubic-bezier-timing-function>|<step-timing-function>*/",
-      "/*ease | ease-in | ease-out | ease-in-out | cubic-bezier(0.1, 0.7, 1.0, 0.1)*/",
-      "/*step-start | step-end | steps(<integer, [jump-start | jump-end | jump-none | jump-both | start | end]>)*/",
-      "transition-timing-function: linear;"
+      "$1 {",
+      "\t/*CSS属性的名称 过渡时间 时间曲线 延迟时间*/",
+      "\ttransition: property duration timing-function delay;",
+      "\t/*规定应用过渡的 CSS 属性的名称，none: 没有过渡动画，all: 所有可被动画的属性，<custom-ident>*/",
+      "\ttransition-property: all;",
+      "\t/*定义过渡效果花费的时间。默认是 0s。也可以是ms*/",
+      "\ttransition-duration: 2s;",
+      "\t/*规定过渡效果何时开始，默认0s，也可以是ms*/",
+      "\ttransition-delay: 2s;",
+      "\t/*规定过渡效果的时间曲线，linear|<cubic-bezier-timing-function>|<step-timing-function>*/",
+      "\t/*ease | ease-in | ease-out | ease-in-out | cubic-bezier(0.1, 0.7, 1.0, 0.1)*/",
+      "\t/*step-start | step-end | steps(<integer, [jump-start | jump-end | jump-none | jump-both | start | end]>)*/",
+      "\ttransition-timing-function: linear;",
+      "}"
     ],
     "description": "元素从一种样式逐渐改变为另一种的效果，指定要添加效果的CSS属性及持续时间"
   },
@@ -347,5 +355,36 @@
       "}"
     ],
     "description": "针对不同的媒体类型定义不同的样式，使用 @media 查询来制作响应式设计"
+  },
+  "cssPropertyOrder": {
+    "prefix": "gn-css-property-order",
+    "body": [
+      "/*定位属性*/",
+      "/*position、display、float、left、top、right、bottom、overflow、clear、z-index等*/",
+      "/*自身属性*/",
+      "/*width, height, padding, margin，border，background等*/",
+      "/*文字系列*/",
+      "/*font, line-height, letter-spacing, color等*/",
+      "/*文本属性*/",
+      "/*text-align，vertical-align，text-wrap，text-transform，text-indent，text-decoration，letter-spacing，word-spacing，white-space，text-overflow等*/",
+      "/*css3等属性*/",
+      "/*box-shadow, border-radius, animation, transition等*/"
+    ],
+    "description": "减少浏览器reflow（回流），提升浏览器渲染dom的性能"
+  },
+  "resetCss": {
+    "prefix": "gn-css-reset",
+    "body": [
+      "body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */",
+      "dl, dt, dd, ul, ol, li, /* list elements 列表元素 */",
+      "pre, /* text formatting elements 文本格式元素 */",
+      "form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */",
+      "th, td /* table elements 表格元素 */ {",
+      "\tmargin: 0;",
+      "\tpadding: 0;",
+      "\tbox-sizing: border-box;",
+      "}"
+    ],
+    "description": ""
   }
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>demo01</title>
+  </head>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      width: 100vw;
+      height: 100vh;
+      background: #bdc3c7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .box {
+      width: 400px;
+      height: 400px;
+      border: 1px dotted #fff;
+    }
+    .square {
+      width: 100px;
+      height: 100px;
+      background: #f1c40f;
+      animation-name: circle;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes circle {
+      25% {
+        transform: translateX(300px) scale(1.2) rotate3d(0, 1, 0, 90deg);
+        background: #1abc9c;
+        border-radius: 25%;
+      }
+      50% {
+        transform: translate(300px, 300px) scale(1.5) rotate(0deg);
+        background: #3498db;
+        border-radius: 50%;
+      }
+      75% {
+        transform: translateY(300px) scale(1.2) rotate(-45deg);
+        background: #8e44ad;
+        border-radius: 25%;
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="square"></div>
+      </div>
+    </div>
+  </body>
+</html>
