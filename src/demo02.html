@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 100vw;
+        height: 100vh;
+      }
+      .verticalcenter {
+        width: 200px;
+        height: 200px;
+        background: #27ae60;
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+      a[href^="http://"]
+      {
+        padding-right: 20px;
+        background: #2980b9 no-repeat center right;
+      }
+      /* emails */
+      a[href^="mailto:"] {
+        padding-right: 20px;
+        background: #27ae60 no-repeat center right;
+      }
+
+      /* pdfs */
+      a[href$=".pdf"] {
+        padding-right: 20px;
+        background: #d35400 no-repeat center right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <div class="verticalcenter"></div> -->
+      <a href="http://www.baidu.com">网址</a>
+      <a href="mailto://pop3.126.com">邮箱</a>
+      <a href="a.pdf">PDF</a>
+    </div>
+  </body>
+</html>

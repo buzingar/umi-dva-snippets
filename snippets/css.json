@@ -23,6 +23,41 @@
     ],
     "description": "border style"
   },
+  "verticalCenter": {
+    "prefix": "gn-css-vertical-center-transform",
+    "body": [
+      ".vertical-center {",
+      "\tposition: relative;",
+      "\ttop: 50%;",
+      "\t-webkit-transform: translateY(-50%);",
+      "\t-o-transform: translateY(-50%);",
+      "\ttransform: translateY(-50%);",
+      "}"
+    ],
+    "description": "垂直居中，用tranform"
+  },
+  "useStyleByType": {
+    "prefix": "gn-css-ahref",
+    "body": [
+      "a[href^=\"http://\"]{",
+      "\tpadding-right: 20px;",
+      "\tbackground: url($1) no-repeat center right;",
+      "}",
+      "",
+      "/* emails */",
+      "a[href^=\"mailto:\"]{",
+      "\tpadding-right: 20px;",
+      "\tbackground: url($2) no-repeat center right;",
+      "}",
+      "",
+      "/* pdfs */",
+      "a[href$=\".pdf\"]{",
+      "\tpadding-right: 20px;",
+      "\tbackground: url($3) no-repeat center right;",
+      "}"
+    ],
+    "description": "基于文件格式使用不同的样式"
+  },
   "background": {
     "prefix": "gn-css-background",
     "body": [
